@@ -1,356 +1,223 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
-interface Props {
+interface HomeSectionProps {
   isVisible: boolean;
   onExploreServices: () => void;
 }
 
-const slides = [
-  {
-    bg: "/assets/generated/aura-mep-hero-bg-v2.dim_1920x1080.jpg",
-    headline: "ENGINEERING\nTHE FUTURE",
-    sub: "MEP Consultancy Excellence",
-    num: "01",
-    isVideo: true,
-  },
-  {
-    bg: "/assets/generated/aura-mep-hero-bg.dim_1920x1080.jpg",
-    headline: "PRECISION\nMEP DESIGN",
-    sub: "Mechanical · Electrical · Plumbing",
-    num: "02",
-    isVideo: false,
-  },
-  {
-    bg: "/assets/generated/mep-systems.dim_800x600.jpg",
-    headline: "BUILT\nON TRUST",
-    sub: "A ProLeed Group Company · Madurai",
-    num: "03",
-    isVideo: false,
-  },
-];
-
-export default function HomeSection({ isVisible, onExploreServices }: Props) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [prevSlide, setPrevSlide] = useState<number | null>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    timerRef.current = setInterval(() => {
-      setPrevSlide(currentSlide);
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isVisible, currentSlide]);
-
-  const slide = slides[currentSlide];
-
+export default function HomeSection({
+  isVisible,
+  onExploreServices,
+}: HomeSectionProps) {
   return (
-    <div
-      className={`section-full ${
-        isVisible ? "section-visible" : "section-hidden"
-      }`}
+    <section
+      className={`section-full ${isVisible ? "section-visible" : "section-hidden"}`}
+      style={{ zIndex: 10 }}
     >
-      {/* Slide backgrounds */}
-      {slides.map((s, i) => (
-        <div
-          key={s.bg}
-          className="absolute inset-0 overflow-hidden"
+      {/* Background image with Ken Burns */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src="/assets/generated/aura-mep-hero-bg.dim_1920x1080.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
-            opacity: i === currentSlide ? 1 : 0,
-            transition: "opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1)",
-            zIndex: i === currentSlide ? 1 : i === prevSlide ? 0 : 0,
+            animation: "kenBurns 20s ease-in-out infinite alternate",
+            transformOrigin: "center center",
           }}
-        >
-          {i === 0 ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover hero-slide-bg"
-              style={{ transformOrigin: "center center" }}
-            >
-              <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-buildings-in-a-city-4474-large.mp4"
-                type="video/mp4"
-              />
-              <img
-                src="/assets/generated/aura-mep-hero-bg-v2.dim_1920x1080.jpg"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </video>
-          ) : (
-            <img
-              src={s.bg}
-              alt=""
-              className="hero-slide-bg absolute inset-0 w-full h-full object-cover"
-              style={{ transformOrigin: "center center" }}
-            />
-          )}
-        </div>
-      ))}
-
-      {/* Ambient glow orbs */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 1, overflow: "hidden" }}
-      >
+        />
+        {/* Dark overlay */}
         <div
-          className="shimmer-orb"
+          className="absolute inset-0"
           style={{
-            position: "absolute",
-            top: "20%",
-            left: "10%",
-            width: 320,
-            height: 320,
-            borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(101,162,215,0.07) 0%, transparent 70%)",
-            animation: "floatUp 8s ease-in-out infinite",
+              "linear-gradient(180deg, rgba(5,15,30,0.82) 0%, rgba(10,22,40,0.55) 50%, rgba(5,15,30,0.78) 100%)",
+          }}
+        />
+
+        {/* Shimmer orbs */}
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: 500,
+            height: 500,
+            top: "10%",
+            left: "60%",
+            background:
+              "radial-gradient(circle, rgba(0,180,216,0.18) 0%, rgba(0,180,216,0.04) 60%, transparent 80%)",
+            animation:
+              "floatOrb 12s ease-in-out infinite, shimmerPulse 6s ease-in-out infinite",
           }}
         />
         <div
-          className="shimmer-orb"
+          className="absolute rounded-full pointer-events-none"
           style={{
-            position: "absolute",
-            bottom: "25%",
+            width: 350,
+            height: 350,
+            bottom: "20%",
             right: "15%",
-            width: 240,
-            height: 240,
-            borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(101,162,215,0.05) 0%, transparent 70%)",
-            animation: "floatUp 11s ease-in-out infinite 2s",
+              "radial-gradient(circle, rgba(0,220,240,0.14) 0%, rgba(0,180,216,0.04) 60%, transparent 80%)",
+            animation:
+              "floatOrb 16s ease-in-out infinite reverse, shimmerPulse 8s ease-in-out infinite 2s",
           }}
         />
       </div>
 
-      {/* Overlay */}
+      {/* Main content — centered */}
       <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.60) 55%, rgba(0,0,0,0.92) 100%)",
-          zIndex: 2,
-        }}
-      />
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
+        style={{ paddingTop: "var(--nav-height)" }}
+      >
+        {/* Badge */}
+        <div
+          className="mb-5 px-5 py-2 rounded-full border text-xs font-bold tracking-widest uppercase"
+          style={{
+            color: "oklch(var(--aqua-glow))",
+            borderColor: "rgba(0,180,216,0.45)",
+            background: "rgba(0,180,216,0.08)",
+            backdropFilter: "blur(8px)",
+            animation: isVisible ? "fadeSlideUp 0.6s ease forwards" : "none",
+            opacity: 0,
+          }}
+        >
+          A ProLeed Group Company
+        </div>
 
-      {/* Content */}
-      <AnimatePresence>
-        {isVisible && (
-          <motion.div
-            key="home-content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 flex flex-col justify-end"
-            style={{ paddingTop: "var(--nav-height)", zIndex: 3 }}
+        {/* Headline */}
+        <h1
+          className="font-bold leading-none mb-4"
+          style={{
+            fontSize: "clamp(3.5rem, 10vw, 7rem)",
+            letterSpacing: "-0.02em",
+            fontFamily: "'DM Sans', sans-serif",
+            animation: isVisible
+              ? "fadeSlideUp 0.7s ease 0.1s forwards"
+              : "none",
+            opacity: 0,
+          }}
+        >
+          <span
+            style={{
+              color: "rgba(220,240,255,0.97)",
+              textShadow: "0 2px 30px rgba(0,0,0,0.5)",
+            }}
           >
-            {/* Main content — left aligned, at bottom area */}
-            <div className="px-14 pb-20 max-w-5xl">
-              {/* ProLeed label */}
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={`label-${currentSlide}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  style={{
-                    fontSize: "0.65rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.22em",
-                    textTransform: "uppercase",
-                    color: "oklch(0.65 0.16 215)",
-                    marginBottom: "16px",
-                  }}
-                >
-                  A ProLeed Group Company
-                </motion.p>
-              </AnimatePresence>
+            AURA{" "}
+          </span>
+          <span
+            style={{
+              color: "oklch(var(--aqua-glow))",
+              textShadow: "0 0 40px rgba(0,180,216,0.6)",
+            }}
+          >
+            MEP
+          </span>
+        </h1>
 
-              {/* Headline — staggered word animation */}
-              <AnimatePresence mode="wait">
-                <motion.h1
-                  key={`headline-${currentSlide}`}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4 }}
-                  style={{
-                    fontFamily:
-                      "'Bricolage Grotesque', 'Playfair Display', serif",
-                    fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
-                    fontWeight: 800,
-                    letterSpacing: "-0.025em",
-                    lineHeight: 0.92,
-                    color: "white",
-                    whiteSpace: "pre-line",
-                    marginBottom: "24px",
-                  }}
-                >
-                  {slide.headline.split(/\s+/).map((word, wi) => (
-                    <motion.span
-                      key={`s${currentSlide}-${word}`}
-                      initial={{ opacity: 0, y: 22 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.55,
-                        delay: wi * 0.12,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      style={{
-                        display: "inline-block",
-                        marginRight: word === "\n" ? 0 : "0.25em",
-                      }}
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </motion.h1>
-              </AnimatePresence>
+        {/* Tagline */}
+        <p
+          className="font-medium mb-3"
+          style={{
+            fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
+            color: "rgba(220,240,255,0.92)",
+            letterSpacing: "0.01em",
+            animation: isVisible
+              ? "fadeSlideUp 0.7s ease 0.2s forwards"
+              : "none",
+            opacity: 0,
+          }}
+        >
+          Engineering Excellence. Built on Trust.
+        </p>
 
-              {/* Sub */}
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={`sub-${currentSlide}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  style={{
-                    fontSize: "clamp(0.65rem, 1vw, 0.82rem)",
-                    fontWeight: 300,
-                    letterSpacing: "0.12em",
-                    color: "rgba(255,255,255,0.65)",
-                    marginBottom: "36px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {slide.sub}
-                </motion.p>
-              </AnimatePresence>
+        {/* Sub-tagline */}
+        <p
+          className="mb-8"
+          style={{
+            fontSize: "clamp(0.75rem, 1.5vw, 0.95rem)",
+            color: "rgba(202,240,248,0.6)",
+            letterSpacing: "0.03em",
+            animation: isVisible
+              ? "fadeSlideUp 0.7s ease 0.3s forwards"
+              : "none",
+            opacity: 0,
+          }}
+        >
+          MEP Consultancy | Madurai | A ProLeed Group Company
+        </p>
 
-              {/* CTA */}
-              <motion.button
-                data-ocid="home.services.primary_button"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                onClick={onExploreServices}
-                className="group flex items-center gap-3"
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: "0.7rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
-                    color: "white",
-                    borderBottom: "1px solid rgba(255,255,255,0.35)",
-                    paddingBottom: "2px",
-                    transition: "border-color 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.target as HTMLElement).style.borderBottomColor = "white";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.target as HTMLElement).style.borderBottomColor =
-                      "rgba(255,255,255,0.35)";
-                  }}
-                >
-                  EXPLORE OUR SERVICES
-                </span>
-                <span
-                  style={{ color: "white", fontSize: "1rem", fontWeight: 300 }}
-                >
-                  →
-                </span>
-              </motion.button>
-            </div>
+        {/* CTA */}
+        <button
+          type="button"
+          data-ocid="home.services.primary_button"
+          onClick={onExploreServices}
+          className="flex items-center gap-2 font-bold uppercase tracking-widest"
+          style={{
+            fontSize: "0.8rem",
+            padding: "14px 36px",
+            borderRadius: 50,
+            background:
+              "linear-gradient(135deg, rgba(0,180,216,0.9), rgba(0,150,190,0.95))",
+            color: "#fff",
+            border: "none",
+            cursor: "pointer",
+            boxShadow: "0 4px 24px rgba(0,180,216,0.45)",
+            transition: "all 0.3s ease",
+            animation: isVisible
+              ? "fadeSlideUp 0.7s ease 0.4s forwards"
+              : "none",
+            opacity: 0,
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.boxShadow =
+              "0 6px 32px rgba(0,180,216,0.7)";
+            (e.currentTarget as HTMLButtonElement).style.transform =
+              "translateY(-2px)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.boxShadow =
+              "0 4px 24px rgba(0,180,216,0.45)";
+            (e.currentTarget as HTMLButtonElement).style.transform =
+              "translateY(0)";
+          }}
+        >
+          Explore Our Services
+          <ArrowRight size={16} />
+        </button>
+      </div>
 
-            {/* Slide counter — bottom right */}
-            <div
-              className="absolute bottom-20 right-14 flex items-center gap-3"
-              style={{ zIndex: 4 }}
-            >
+      {/* Bottom services bar */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10"
+        style={{
+          background: "rgba(6,14,28,0.85)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(0,180,216,0.15)",
+          padding: "14px 24px",
+        }}
+      >
+        <div className="flex items-center justify-center gap-3 md:gap-6 flex-wrap">
+          {[
+            "Mechanical",
+            "Electrical",
+            "Plumbing",
+            "Fire Fighting",
+            "HVAC",
+          ].map((svc, i, arr) => (
+            <span key={svc} className="flex items-center gap-3">
               <span
-                style={{
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.16em",
-                  color: "white",
-                }}
+                className="text-xs font-semibold tracking-widest uppercase"
+                style={{ color: "rgba(202,240,248,0.65)" }}
               >
-                {slide.num}
+                {svc}
               </span>
-              <span
-                style={{
-                  width: "32px",
-                  height: "1px",
-                  background: "rgba(255,255,255,0.4)",
-                  display: "inline-block",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.16em",
-                  color: "rgba(255,255,255,0.4)",
-                }}
-              >
-                03
-              </span>
-            </div>
-
-            {/* Bottom services strip */}
-            <div
-              className="absolute bottom-0 left-0 right-0 flex items-center px-14 py-4"
-              style={{
-                borderTop: "1px solid rgba(255,255,255,0.08)",
-                background: "rgba(0,0,0,0.45)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              {[
-                "Mechanical",
-                "Electrical",
-                "Plumbing",
-                "Fire Fighting",
-                "HVAC",
-              ].map((item, i) => (
-                <span
-                  key={item}
-                  style={{
-                    fontSize: "0.6rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.45)",
-                    paddingRight: i < 4 ? "2.5rem" : 0,
-                    borderRight:
-                      i < 4 ? "1px solid rgba(255,255,255,0.12)" : "none",
-                    marginRight: i < 4 ? "2.5rem" : 0,
-                  }}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+              {i < arr.length - 1 && (
+                <span style={{ color: "rgba(0,180,216,0.4)" }}>·</span>
+              )}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
