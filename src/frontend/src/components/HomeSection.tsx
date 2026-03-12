@@ -11,13 +11,14 @@ export default function HomeSection({ isVisible, onExploreServices }: Props) {
     <div
       className={`section-full ${isVisible ? "section-visible" : "section-hidden"}`}
     >
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('/assets/generated/hero-building.dim_1920x1080.jpg')",
-        }}
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        src="https://assets.mixkit.co/videos/preview/mixkit-construction-of-a-building-on-a-city-1894-large.mp4"
       />
       {/* Dark overlay */}
       <div

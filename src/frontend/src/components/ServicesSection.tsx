@@ -9,37 +9,73 @@ const services = [
   {
     title: "Mechanical Engineering",
     image: "/assets/generated/mep-systems.dim_800x600.jpg",
-    desc: "HVAC design, mechanical system design, energy analysis",
+    desc: "Complete mechanical system design, analysis & optimization",
+    features: [
+      "HVAC System Design",
+      "Energy Efficiency Analysis",
+      "Mechanical Load Calculations",
+      "Equipment Selection & Sizing",
+    ],
     Icon: Settings,
   },
   {
     title: "Electrical Engineering",
     image: "/assets/generated/electrical-service.dim_600x400.jpg",
-    desc: "LV/MV systems, lighting design, power distribution",
+    desc: "Full-spectrum electrical design for commercial & industrial projects",
+    features: [
+      "LV/MV Power Distribution",
+      "Lighting Design & Control",
+      "Earthing & Lightning Protection",
+      "Emergency Power Systems",
+    ],
     Icon: Zap,
   },
   {
     title: "Plumbing & Drainage",
     image: "/assets/generated/plumbing-service.dim_600x400.jpg",
-    desc: "Water supply, drainage systems, sanitary design",
+    desc: "Efficient water supply and drainage solutions",
+    features: [
+      "Domestic Water Supply Design",
+      "Drainage & Sewerage Systems",
+      "Hot Water System Design",
+      "Rainwater Harvesting",
+    ],
     Icon: Droplets,
   },
   {
     title: "Fire Fighting Systems",
     image: null,
-    desc: "Fire suppression, sprinkler design, fire alarm systems",
+    desc: "Life safety and fire protection engineering",
+    features: [
+      "Sprinkler System Design",
+      "Fire Alarm & Detection",
+      "Fire Suppression Systems",
+      "Compliance & Code Review",
+    ],
     Icon: Flame,
   },
   {
     title: "HVAC Systems",
     image: "/assets/generated/hvac-service.dim_600x400.jpg",
-    desc: "Air conditioning, ventilation, thermal comfort",
+    desc: "Thermal comfort and indoor air quality solutions",
+    features: [
+      "Central Air Conditioning",
+      "Ventilation & Air Quality",
+      "Chiller & AHU Design",
+      "BMS Integration",
+    ],
     Icon: Wind,
   },
   {
     title: "Project Management",
     image: null,
     desc: "End-to-end project coordination and delivery",
+    features: [
+      "Design Coordination",
+      "Site Supervision & QA/QC",
+      "Cost Estimation & BOQ",
+      "As-Built Documentation",
+    ],
     Icon: BarChart3,
   },
 ];
@@ -107,6 +143,17 @@ export default function ServicesSection({ isVisible }: Props) {
                     Services
                   </span>
                 </h2>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "rgba(144,224,239,0.65)",
+                    marginTop: "0.5rem",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  Delivering precision-engineered MEP solutions across
+                  residential, commercial &amp; industrial projects.
+                </p>
               </motion.div>
 
               {/* Grid */}
@@ -181,6 +228,28 @@ export default function ServicesSection({ isVisible }: Props) {
                         >
                           {service.desc}
                         </p>
+                        <div className="flex flex-col gap-0.5 mt-2">
+                          {service.features.map((feature) => (
+                            <span
+                              key={feature}
+                              style={{
+                                fontSize: "0.72rem",
+                                color: "rgba(202,240,248,0.55)",
+                                lineHeight: 1.6,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  color: "rgba(0,180,216,0.7)",
+                                  marginRight: "0.35rem",
+                                }}
+                              >
+                                •
+                              </span>
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </motion.div>
