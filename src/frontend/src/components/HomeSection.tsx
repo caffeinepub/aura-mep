@@ -11,15 +11,18 @@ export default function HomeSection({ isVisible, onExploreServices }: Props) {
     <div
       className={`section-full ${isVisible ? "section-visible" : "section-hidden"}`}
     >
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        src="https://assets.mixkit.co/videos/preview/mixkit-construction-of-a-building-on-a-city-1894-large.mp4"
-      />
+      {/* Background Image with Ken Burns */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src="/assets/generated/aura-mep-hero-bg.dim_1920x1080.jpg"
+          alt="Aura MEP Hero"
+          className="hero-bg-image absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Wave shimmer overlay */}
+      <div className="wave-shimmer absolute inset-0 pointer-events-none" />
+
       {/* Dark overlay */}
       <div
         className="absolute inset-0"
@@ -34,6 +37,22 @@ export default function HomeSection({ isVisible, onExploreServices }: Props) {
         style={{
           background:
             "radial-gradient(ellipse at 20% 80%, rgba(0,119,182,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(0,180,216,0.1) 0%, transparent 50%)",
+        }}
+      />
+
+      {/* Floating glow orb behind headline */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "38%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "600px",
+          height: "300px",
+          background:
+            "radial-gradient(ellipse, rgba(0,180,216,0.18) 0%, transparent 70%)",
+          filter: "blur(40px)",
+          animation: "textGlowPulse 4s ease-in-out infinite",
         }}
       />
 
@@ -69,6 +88,7 @@ export default function HomeSection({ isVisible, onExploreServices }: Props) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
+              className="hero-glow-text"
               style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: "clamp(3rem, 9vw, 7rem)",
@@ -76,7 +96,6 @@ export default function HomeSection({ isVisible, onExploreServices }: Props) {
                 letterSpacing: "-0.02em",
                 lineHeight: 1,
                 color: "white",
-                textShadow: "0 4px 40px rgba(0,0,0,0.5)",
               }}
             >
               AURA{" "}
@@ -157,7 +176,7 @@ export default function HomeSection({ isVisible, onExploreServices }: Props) {
           (item) => (
             <span
               key={item}
-              className="text-xs font-semibold tracking-widest uppercase hidden sm:block"
+              className="text-xs font-semibold tracking-widest uppercase"
               style={{
                 color: "rgba(144,224,239,0.7)",
                 borderRight: "1px solid rgba(0,180,216,0.2)",
