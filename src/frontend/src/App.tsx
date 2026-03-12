@@ -14,10 +14,7 @@ export default function App() {
 
   useEffect(() => {
     const updateScale = () => {
-      const scale = Math.min(
-        window.innerWidth / 1280,
-        window.innerHeight / 720,
-      );
+      const scale = window.innerWidth / 1280;
       document.documentElement.style.setProperty(
         "--scale-factor",
         String(scale),
@@ -38,7 +35,7 @@ export default function App() {
       style={{
         width: "100%",
         height: "100%",
-        background: "oklch(0.14 0.06 240)",
+        background: "oklch(0.07 0.015 240)",
       }}
     >
       <Navbar

@@ -15,6 +15,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ["'Bricolage Grotesque'", "'Playfair Display'", "serif"],
+        body: ["'DM Sans'", "sans-serif"],
+        sans: ["'DM Sans'", "sans-serif"],
+      },
       colors: {
         border: "oklch(var(--border))",
         input: "oklch(var(--input))",

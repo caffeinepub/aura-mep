@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Globe, Loader2, Mail, MapPin, Phone } from "lucide-react";
@@ -10,6 +9,13 @@ import { useSubmitContactForm } from "../hooks/useQueries";
 
 interface Props {
   isVisible: boolean;
+}
+
+function hoverIn(e: React.MouseEvent) {
+  (e.currentTarget as HTMLElement).style.color = "white";
+}
+function hoverOut(e: React.MouseEvent) {
+  (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)";
 }
 
 export default function ContactSection({ isVisible }: Props) {
@@ -36,20 +42,19 @@ export default function ContactSection({ isVisible }: Props) {
 
   return (
     <div
-      className={`section-full ${isVisible ? "section-visible" : "section-hidden"}`}
+      className={`section-full ${
+        isVisible ? "section-visible" : "section-hidden"
+      }`}
     >
       <div
         className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, oklch(0.09 0.04 245) 0%, oklch(0.15 0.06 230) 50%, oklch(0.11 0.04 242) 100%)",
-        }}
+        style={{ background: "oklch(0.07 0.015 240)" }}
       />
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 80%, rgba(0,119,182,0.1) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 50% 100%, rgba(101,162,215,0.05) 0%, transparent 50%)",
         }}
       />
 
@@ -64,250 +69,241 @@ export default function ContactSection({ isVisible }: Props) {
             className="absolute inset-0 flex items-center"
             style={{ paddingTop: "var(--nav-height)" }}
           >
-            <div className="w-full max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full py-8">
-              {/* Left: Company Info */}
+            <div className="w-full max-w-6xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start h-full py-10">
+              {/* Left: Info */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="flex flex-col gap-6"
+                transition={{ delay: 0.15, duration: 0.6 }}
+                className="flex flex-col"
               >
-                <div>
-                  <div
-                    className="inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-4"
-                    style={{
-                      background: "rgba(0,180,216,0.1)",
-                      border: "1px solid rgba(0,180,216,0.3)",
-                      color: "oklch(0.85 0.12 198)",
-                    }}
-                  >
-                    Get In Touch
-                  </div>
-                  <h2
-                    style={{
-                      fontFamily: "'Fraunces', serif",
-                      fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                      fontWeight: 700,
-                      color: "white",
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    Contact{" "}
-                    <span style={{ color: "oklch(0.72 0.16 210)" }}>Us</span>
-                  </h2>
+                <p className="section-label mb-3">Get In Touch</p>
+                <h2
+                  style={{
+                    fontFamily:
+                      "'Bricolage Grotesque', 'Playfair Display', serif",
+                    fontSize: "clamp(2rem, 3.5vw, 3.25rem)",
+                    fontWeight: 800,
+                    color: "white",
+                    lineHeight: 0.95,
+                    letterSpacing: "-0.02em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Request A
+                </h2>
+                <h2
+                  style={{
+                    fontFamily:
+                      "'Bricolage Grotesque', 'Playfair Display', serif",
+                    fontSize: "clamp(2rem, 3.5vw, 3.25rem)",
+                    fontWeight: 800,
+                    color: "oklch(0.65 0.16 215)",
+                    lineHeight: 0.95,
+                    letterSpacing: "-0.02em",
+                    textTransform: "uppercase",
+                    marginBottom: "4px",
+                  }}
+                >
+                  Callback
+                </h2>
+                <span className="accent-line" />
+
+                <div className="flex flex-col mt-6">
+                  {[
+                    {
+                      Icon: MapPin,
+                      label: "Aura MEP",
+                      value: "Madurai, Tamil Nadu, India",
+                      href: undefined,
+                    },
+                    {
+                      Icon: MapPin,
+                      label: "ProLeed Engineering Consultancy",
+                      value: "Dubai, UAE (Parent Company)",
+                      href: undefined,
+                    },
+                    {
+                      Icon: Mail,
+                      label: "Email",
+                      value: "info@auramep.com",
+                      href: "mailto:info@auramep.com",
+                    },
+                    {
+                      Icon: Phone,
+                      label: "Phone",
+                      value: "+91 452 000 0000",
+                      href: undefined,
+                    },
+                    {
+                      Icon: Globe,
+                      label: "Website",
+                      value: "proleed.com",
+                      href: "https://proleed.com",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-start gap-4 py-4"
+                      style={{
+                        borderBottom: "1px solid rgba(255,255,255,0.06)",
+                      }}
+                    >
+                      <item.Icon
+                        size={13}
+                        style={{
+                          color: "oklch(0.65 0.16 215)",
+                          marginTop: "3px",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <div>
+                        <p
+                          style={{
+                            fontSize: "0.6rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.16em",
+                            textTransform: "uppercase",
+                            color: "rgba(255,255,255,0.3)",
+                            marginBottom: "2px",
+                          }}
+                        >
+                          {item.label}
+                        </p>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            target={
+                              item.href.startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel="noopener noreferrer"
+                            style={{
+                              color: "rgba(255,255,255,0.75)",
+                              fontSize: "0.85rem",
+                              textDecoration: "none",
+                            }}
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p
+                            style={{
+                              color: "rgba(255,255,255,0.75)",
+                              fontSize: "0.85rem",
+                            }}
+                          >
+                            {item.value}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="glass-card p-6 flex flex-col gap-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin
-                      size={16}
-                      style={{
-                        color: "oklch(0.85 0.14 205)",
-                        marginTop: "2px",
-                        flexShrink: 0,
-                      }}
-                    />
-                    <div>
-                      <p
-                        style={{
-                          color: "white",
-                          fontWeight: 600,
-                          fontSize: "0.875rem",
-                        }}
-                      >
-                        Aura MEP
-                      </p>
-                      <p
-                        style={{
-                          color: "rgba(202,240,248,0.7)",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        Madurai, Tamil Nadu, India
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <MapPin
-                      size={16}
-                      style={{
-                        color: "oklch(0.72 0.16 210)",
-                        marginTop: "2px",
-                        flexShrink: 0,
-                      }}
-                    />
-                    <div>
-                      <p
-                        style={{
-                          color: "white",
-                          fontWeight: 600,
-                          fontSize: "0.875rem",
-                        }}
-                      >
-                        ProLeed Engineering Consultancy
-                      </p>
-                      <p
-                        style={{
-                          color: "rgba(202,240,248,0.7)",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        Dubai, UAE (Parent Company)
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Mail
-                      size={16}
-                      style={{ color: "oklch(0.85 0.14 205)", flexShrink: 0 }}
-                    />
-                    <a
-                      href="mailto:info@auramep.com"
-                      style={{
-                        color: "rgba(202,240,248,0.8)",
-                        fontSize: "0.875rem",
-                        textDecoration: "none",
-                      }}
-                    >
-                      info@auramep.com
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Phone
-                      size={16}
-                      style={{ color: "oklch(0.85 0.14 205)", flexShrink: 0 }}
-                    />
-                    <span
-                      style={{
-                        color: "rgba(202,240,248,0.8)",
-                        fontSize: "0.875rem",
-                      }}
-                    >
-                      +91 452 000 0000
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Globe
-                      size={16}
-                      style={{ color: "oklch(0.85 0.14 205)", flexShrink: 0 }}
-                    />
-                    <a
-                      href="https://proleed.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        color: "oklch(0.85 0.14 205)",
-                        fontSize: "0.875rem",
-                      }}
-                    >
-                      proleed.com
-                    </a>
-                  </div>
-
-                  {/* Social */}
-                  <div className="flex items-center gap-3 pt-2">
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                      style={{
-                        background: "rgba(0,180,216,0.15)",
-                        border: "1px solid rgba(0,180,216,0.3)",
-                      }}
-                    >
-                      <SiLinkedin
-                        size={16}
-                        style={{ color: "oklch(0.85 0.14 205)" }}
-                      />
-                    </a>
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                      style={{
-                        background: "rgba(0,180,216,0.15)",
-                        border: "1px solid rgba(0,180,216,0.3)",
-                      }}
-                    >
-                      <SiInstagram
-                        size={16}
-                        style={{ color: "oklch(0.85 0.14 205)" }}
-                      />
-                    </a>
-                  </div>
+                {/* Social */}
+                <div className="flex items-center gap-4 mt-5">
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "rgba(255,255,255,0.45)",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseEnter={hoverIn}
+                    onMouseLeave={hoverOut}
+                  >
+                    <SiLinkedin size={16} />
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "rgba(255,255,255,0.45)",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseEnter={hoverIn}
+                    onMouseLeave={hoverOut}
+                  >
+                    <SiInstagram size={16} />
+                  </a>
                 </div>
               </motion.div>
 
-              {/* Right: Contact Form */}
+              {/* Right: Form */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="glass-card p-8"
+                transition={{ delay: 0.25, duration: 0.6 }}
               >
-                <h3
-                  className="font-semibold text-white mb-6"
-                  style={{ fontSize: "1.125rem" }}
+                <p className="section-label mb-6">Send A Message</p>
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col"
+                  style={{ gap: "0" }}
                 >
-                  Send us a message
-                </h3>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <div>
-                    <Input
-                      data-ocid="contact.name.input"
-                      placeholder="Your Name"
-                      value={form.name}
-                      onChange={(e) =>
-                        setForm((p) => ({ ...p, name: e.target.value }))
-                      }
-                      required
+                  {[
+                    {
+                      id: "name" as const,
+                      placeholder: "Your Name",
+                      type: "text",
+                      required: true,
+                      ocid: "contact.name.input",
+                    },
+                    {
+                      id: "email" as const,
+                      placeholder: "Email Address",
+                      type: "email",
+                      required: true,
+                      ocid: "contact.email.input",
+                    },
+                    {
+                      id: "phone" as const,
+                      placeholder: "Phone Number",
+                      type: "tel",
+                      required: false,
+                      ocid: "contact.phone.input",
+                    },
+                  ].map((field) => (
+                    <div
+                      key={field.id}
                       style={{
-                        background: "rgba(0,40,80,0.4)",
-                        border: "1px solid rgba(0,180,216,0.25)",
-                        color: "white",
+                        borderBottom: "1px solid rgba(255,255,255,0.1)",
+                        marginBottom: "4px",
                       }}
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      data-ocid="contact.email.input"
-                      type="email"
-                      placeholder="Email Address"
-                      value={form.email}
-                      onChange={(e) =>
-                        setForm((p) => ({ ...p, email: e.target.value }))
-                      }
-                      required
-                      style={{
-                        background: "rgba(0,40,80,0.4)",
-                        border: "1px solid rgba(0,180,216,0.25)",
-                        color: "white",
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      data-ocid="contact.phone.input"
-                      type="tel"
-                      placeholder="Phone Number"
-                      value={form.phone}
-                      onChange={(e) =>
-                        setForm((p) => ({ ...p, phone: e.target.value }))
-                      }
-                      style={{
-                        background: "rgba(0,40,80,0.4)",
-                        border: "1px solid rgba(0,180,216,0.25)",
-                        color: "white",
-                      }}
-                    />
-                  </div>
-                  <div>
+                    >
+                      <Input
+                        data-ocid={field.ocid}
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        value={form[field.id]}
+                        onChange={(e) =>
+                          setForm((p) => ({ ...p, [field.id]: e.target.value }))
+                        }
+                        required={field.required}
+                        style={{
+                          background: "transparent",
+                          border: "none",
+                          borderRadius: 0,
+                          color: "white",
+                          padding: "14px 0",
+                          fontSize: "0.875rem",
+                          boxShadow: "none",
+                        }}
+                        className="placeholder:text-white/30 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      />
+                    </div>
+                  ))}
+
+                  <div
+                    style={{
+                      borderBottom: "1px solid rgba(255,255,255,0.1)",
+                      marginBottom: "28px",
+                    }}
+                  >
                     <Textarea
                       data-ocid="contact.message.textarea"
                       placeholder="Your Message"
@@ -316,35 +312,43 @@ export default function ContactSection({ isVisible }: Props) {
                         setForm((p) => ({ ...p, message: e.target.value }))
                       }
                       required
-                      rows={4}
+                      rows={3}
                       style={{
-                        background: "rgba(0,40,80,0.4)",
-                        border: "1px solid rgba(0,180,216,0.25)",
+                        background: "transparent",
+                        border: "none",
+                        borderRadius: 0,
                         color: "white",
+                        padding: "14px 0",
+                        fontSize: "0.875rem",
                         resize: "none",
+                        boxShadow: "none",
                       }}
+                      className="placeholder:text-white/30 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                   </div>
 
-                  {/* States */}
                   {isPending && (
                     <div
                       data-ocid="contact.loading_state"
-                      className="flex items-center gap-2 text-sm"
-                      style={{ color: "rgba(202,240,248,0.7)" }}
+                      className="flex items-center gap-2 mb-3"
+                      style={{
+                        color: "rgba(255,255,255,0.5)",
+                        fontSize: "0.8rem",
+                      }}
                     >
-                      <Loader2 size={14} className="animate-spin" />
+                      <Loader2 size={13} className="animate-spin" />
                       Sending your message...
                     </div>
                   )}
                   {isError && (
                     <div
                       data-ocid="contact.error_state"
-                      className="text-sm px-3 py-2 rounded"
+                      className="mb-3 px-4 py-2"
                       style={{
-                        background: "rgba(220,50,50,0.15)",
+                        background: "rgba(220,50,50,0.12)",
+                        borderLeft: "2px solid rgba(220,50,50,0.6)",
                         color: "#fc8181",
-                        border: "1px solid rgba(220,50,50,0.3)",
+                        fontSize: "0.8rem",
                       }}
                     >
                       Failed to send. Please try again.
@@ -353,35 +357,52 @@ export default function ContactSection({ isVisible }: Props) {
                   {isSuccess && (
                     <div
                       data-ocid="contact.success_state"
-                      className="text-sm px-3 py-2 rounded"
+                      className="mb-3 px-4 py-2"
                       style={{
-                        background: "rgba(0,180,100,0.15)",
+                        background: "rgba(0,180,100,0.10)",
+                        borderLeft: "2px solid rgba(0,180,100,0.5)",
                         color: "#68d391",
-                        border: "1px solid rgba(0,180,100,0.3)",
+                        fontSize: "0.8rem",
                       }}
                     >
                       Message sent successfully!
                     </div>
                   )}
 
-                  <Button
+                  <button
                     data-ocid="contact.submit_button"
                     type="submit"
                     disabled={isPending}
-                    className="w-full py-3 font-semibold text-sm tracking-wider uppercase"
+                    className="flex items-center gap-3"
                     style={{
-                      background:
-                        "linear-gradient(135deg, oklch(0.45 0.18 225) 0%, oklch(0.60 0.18 210) 100%)",
-                      color: "white",
+                      background: "transparent",
                       border: "none",
                       cursor: isPending ? "not-allowed" : "pointer",
+                      padding: 0,
+                      width: "fit-content",
                     }}
                   >
-                    {isPending ? (
-                      <Loader2 size={14} className="mr-2 animate-spin" />
-                    ) : null}
-                    {isPending ? "Sending..." : "Send Message"}
-                  </Button>
+                    <span
+                      style={{
+                        fontSize: "0.68rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.2em",
+                        textTransform: "uppercase",
+                        color: isPending ? "rgba(255,255,255,0.3)" : "white",
+                        borderBottom: "1px solid rgba(255,255,255,0.35)",
+                        paddingBottom: "2px",
+                      }}
+                    >
+                      {isPending ? "Sending..." : "Send Message →"}
+                    </span>
+                    {isPending && (
+                      <Loader2
+                        size={12}
+                        className="animate-spin"
+                        style={{ color: "rgba(255,255,255,0.4)" }}
+                      />
+                    )}
+                  </button>
                 </form>
               </motion.div>
             </div>
@@ -391,15 +412,24 @@ export default function ContactSection({ isVisible }: Props) {
 
       {/* Footer */}
       <div
-        className="absolute bottom-0 left-0 right-0 text-center py-3"
-        style={{ color: "rgba(144,224,239,0.4)", fontSize: "0.75rem" }}
+        className="absolute bottom-0 left-0 right-0 flex items-center justify-center py-3"
+        style={{
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+          color: "rgba(255,255,255,0.25)",
+          fontSize: "0.7rem",
+          letterSpacing: "0.08em",
+          gap: "4px",
+        }}
       >
-        © {new Date().getFullYear()}. Built with ❤️ using{" "}
+        © {new Date().getFullYear()} Aura MEP. Built with ❤️ using
         <a
           href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "oklch(0.72 0.16 210)", textDecoration: "none" }}
+          style={{
+            color: "oklch(0.65 0.16 215)",
+            textDecoration: "none",
+          }}
         >
           caffeine.ai
         </a>

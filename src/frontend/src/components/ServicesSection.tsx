@@ -1,4 +1,3 @@
-import { BarChart3, Droplets, Flame, Settings, Wind, Zap } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 interface Props {
@@ -8,76 +7,57 @@ interface Props {
 const services = [
   {
     title: "Mechanical Engineering",
+    desc: "HVAC, load calculations, equipment sizing & energy analysis",
     image: "/assets/generated/mep-systems.dim_800x600.jpg",
-    desc: "Complete mechanical system design, analysis & optimization",
-    features: [
-      "HVAC System Design",
-      "Energy Efficiency Analysis",
-      "Mechanical Load Calculations",
-      "Equipment Selection & Sizing",
-    ],
-    Icon: Settings,
+    gradient:
+      "linear-gradient(135deg, oklch(0.12 0.04 245) 0%, oklch(0.08 0.02 240) 100%)",
   },
   {
     title: "Electrical Engineering",
+    desc: "LV/MV power, lighting design, earthing & emergency systems",
     image: "/assets/generated/electrical-service.dim_600x400.jpg",
-    desc: "Full-spectrum electrical design for commercial & industrial projects",
-    features: [
-      "LV/MV Power Distribution",
-      "Lighting Design & Control",
-      "Earthing & Lightning Protection",
-      "Emergency Power Systems",
-    ],
-    Icon: Zap,
+    gradient:
+      "linear-gradient(135deg, oklch(0.12 0.06 220) 0%, oklch(0.08 0.02 240) 100%)",
   },
   {
     title: "Plumbing & Drainage",
+    desc: "Water supply, sewerage, hot water & rainwater harvesting",
     image: "/assets/generated/plumbing-service.dim_600x400.jpg",
-    desc: "Efficient water supply and drainage solutions",
-    features: [
-      "Domestic Water Supply Design",
-      "Drainage & Sewerage Systems",
-      "Hot Water System Design",
-      "Rainwater Harvesting",
-    ],
-    Icon: Droplets,
+    gradient:
+      "linear-gradient(135deg, oklch(0.10 0.05 235) 0%, oklch(0.07 0.02 240) 100%)",
   },
   {
     title: "Fire Fighting Systems",
+    desc: "Sprinkler design, fire alarm, suppression & code compliance",
     image: null,
-    desc: "Life safety and fire protection engineering",
-    features: [
-      "Sprinkler System Design",
-      "Fire Alarm & Detection",
-      "Fire Suppression Systems",
-      "Compliance & Code Review",
-    ],
-    Icon: Flame,
+    gradient:
+      "linear-gradient(135deg, oklch(0.13 0.04 15) 0%, oklch(0.08 0.02 240) 100%)",
   },
   {
     title: "HVAC Systems",
+    desc: "Central AC, ventilation, chiller design & BMS integration",
     image: "/assets/generated/hvac-service.dim_600x400.jpg",
-    desc: "Thermal comfort and indoor air quality solutions",
-    features: [
-      "Central Air Conditioning",
-      "Ventilation & Air Quality",
-      "Chiller & AHU Design",
-      "BMS Integration",
-    ],
-    Icon: Wind,
+    gradient:
+      "linear-gradient(135deg, oklch(0.11 0.05 200) 0%, oklch(0.07 0.02 240) 100%)",
   },
   {
     title: "Project Management",
+    desc: "Design coordination, site supervision, BOQ & as-built docs",
     image: null,
-    desc: "End-to-end project coordination and delivery",
-    features: [
-      "Design Coordination",
-      "Site Supervision & QA/QC",
-      "Cost Estimation & BOQ",
-      "As-Built Documentation",
-    ],
-    Icon: BarChart3,
+    gradient:
+      "linear-gradient(135deg, oklch(0.12 0.03 55) 0%, oklch(0.08 0.02 240) 100%)",
   },
+];
+
+const marqueeItems = [
+  "Mechanical Engineering",
+  "Electrical Systems",
+  "Plumbing & Drainage",
+  "Fire Fighting",
+  "HVAC Design",
+  "Project Management",
+  "MEP Consultancy",
+  "ProLeed Group",
 ];
 
 export default function ServicesSection({ isVisible }: Props) {
@@ -85,19 +65,10 @@ export default function ServicesSection({ isVisible }: Props) {
     <div
       className={`section-full ${isVisible ? "section-visible" : "section-hidden"}`}
     >
+      {/* Deep dark background */}
       <div
         className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(160deg, oklch(0.10 0.04 245) 0%, oklch(0.14 0.07 230) 40%, oklch(0.11 0.05 242) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 30% 60%, rgba(0,119,182,0.1) 0%, transparent 55%)",
-        }}
+        style={{ background: "oklch(0.07 0.015 240)" }}
       />
 
       <AnimatePresence>
@@ -111,146 +82,150 @@ export default function ServicesSection({ isVisible }: Props) {
             className="absolute inset-0 flex flex-col"
             style={{ paddingTop: "var(--nav-height)" }}
           >
-            <div className="flex flex-col h-full max-w-7xl mx-auto w-full px-6 md:px-12 py-8">
+            <div className="flex flex-col h-full max-w-7xl mx-auto w-full px-12 pt-6 pb-4 min-h-0">
               {/* Header */}
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
-                className="text-center mb-8"
+                className="mb-3 flex-shrink-0"
               >
-                <div
-                  className="inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
-                  style={{
-                    background: "rgba(0,180,216,0.1)",
-                    border: "1px solid rgba(0,180,216,0.3)",
-                    color: "oklch(0.85 0.12 198)",
-                  }}
-                >
-                  What We Do
-                </div>
+                <p className="section-label mb-1">What We Do</p>
                 <h2
                   style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                    fontWeight: 700,
+                    fontFamily:
+                      "'Bricolage Grotesque', 'Playfair Display', serif",
+                    fontSize: "clamp(1.6rem, 2.8vw, 2.75rem)",
+                    fontWeight: 800,
                     color: "white",
-                    lineHeight: 1.1,
+                    lineHeight: 1,
+                    letterSpacing: "-0.02em",
                   }}
                 >
-                  Our{" "}
-                  <span style={{ color: "oklch(0.72 0.16 210)" }}>
-                    Services
-                  </span>
+                  OUR SERVICES
                 </h2>
+                <span className="accent-line-blue" />
+
+                {/* Marquee tagline strip */}
+                <div
+                  className="overflow-hidden mt-2 mb-1"
+                  style={{
+                    borderTop: "1px solid rgba(255,255,255,0.05)",
+                    borderBottom: "1px solid rgba(255,255,255,0.05)",
+                    padding: "6px 0",
+                  }}
+                >
+                  <div
+                    className="marquee-track"
+                    style={{
+                      display: "flex",
+                      gap: "4rem",
+                      whiteSpace: "nowrap",
+                      animation: "marqueeScroll 22s linear infinite",
+                    }}
+                  >
+                    {[...marqueeItems, ...marqueeItems].map((t, idx) => (
+                      <span
+                        key={
+                          idx < marqueeItems.length
+                            ? `first-${t}`
+                            : `second-${t}`
+                        }
+                        style={{
+                          fontSize: "0.6rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.2em",
+                          textTransform: "uppercase",
+                          color: "rgba(255,255,255,0.22)",
+                          flexShrink: 0,
+                        }}
+                      >
+                        {t}{" "}
+                        <span
+                          style={{
+                            color: "oklch(0.65 0.16 215)",
+                            marginLeft: "4rem",
+                          }}
+                        >
+                          ·
+                        </span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
                 <p
                   style={{
-                    fontSize: "0.9rem",
-                    color: "rgba(144,224,239,0.65)",
-                    marginTop: "0.5rem",
+                    fontSize: "0.78rem",
+                    color: "rgba(255,255,255,0.45)",
                     letterSpacing: "0.04em",
+                    marginTop: "3px",
                   }}
                 >
-                  Delivering precision-engineered MEP solutions across
-                  residential, commercial &amp; industrial projects.
+                  Delivering precision-engineered MEP solutions across India and
+                  the Middle East
                 </p>
               </motion.div>
 
-              {/* Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 flex-1 overflow-auto">
+              {/* Grid — flex-1 min-h-0 so it fills remaining space without overflow */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 flex-1 min-h-0 overflow-hidden">
                 {services.map((service, i) => (
                   <motion.div
                     key={service.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.15 + i * 0.08, duration: 0.5 }}
-                    className="glass-card overflow-hidden group relative cursor-default"
-                    style={{ minHeight: "140px" }}
-                    whileHover={{
-                      scale: 1.02,
-                      boxShadow: "0 8px 40px rgba(0,119,182,0.3)",
+                    data-ocid={`services.item.${i + 1}`}
+                    initial={{ opacity: 0, y: 32, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      delay: 0.1 + i * 0.08,
+                      duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
+                    className="service-card group relative overflow-hidden"
+                    whileHover={{ scale: 1.015 }}
                   >
+                    {/* Background */}
                     {service.image ? (
-                      <div className="absolute inset-0">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover opacity-30 group-hover:opacity-45 transition-opacity duration-300"
-                        />
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background:
-                              "linear-gradient(to top, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.4) 100%)",
-                          }}
-                        />
-                      </div>
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
                     ) : (
                       <div
                         className="absolute inset-0"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(0,119,182,0.08) 0%, rgba(0,40,80,0.3) 100%)",
-                        }}
+                        style={{ background: service.gradient }}
                       />
                     )}
 
-                    <div className="relative z-10 p-5 flex flex-col gap-3 h-full">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    {/* Content over overlay */}
+                    <div
+                      className="relative flex flex-col justify-end h-full p-4"
+                      style={{ zIndex: 1 }}
+                    >
+                      <h3
                         style={{
-                          background: "rgba(0,180,216,0.15)",
-                          border: "1px solid rgba(0,180,216,0.3)",
+                          fontFamily: "'Bricolage Grotesque', sans-serif",
+                          fontSize: "0.85rem",
+                          fontWeight: 700,
+                          color: "white",
+                          letterSpacing: "0.02em",
+                          lineHeight: 1.2,
+                          marginBottom: "4px",
+                          textTransform: "uppercase",
                         }}
                       >
-                        <service.Icon
-                          size={18}
-                          style={{ color: "oklch(0.85 0.14 205)" }}
-                        />
-                      </div>
-                      <div>
-                        <h3
-                          className="font-semibold text-white mb-1"
-                          style={{
-                            fontSize: "0.9rem",
-                            letterSpacing: "0.02em",
-                          }}
-                        >
-                          {service.title}
-                        </h3>
-                        <p
-                          style={{
-                            color: "rgba(202,240,248,0.6)",
-                            fontSize: "0.78rem",
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          {service.desc}
-                        </p>
-                        <div className="flex flex-col gap-0.5 mt-2">
-                          {service.features.map((feature) => (
-                            <span
-                              key={feature}
-                              style={{
-                                fontSize: "0.72rem",
-                                color: "rgba(202,240,248,0.55)",
-                                lineHeight: 1.6,
-                              }}
-                            >
-                              <span
-                                style={{
-                                  color: "rgba(0,180,216,0.7)",
-                                  marginRight: "0.35rem",
-                                }}
-                              >
-                                •
-                              </span>
-                              {feature}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                        {service.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "0.68rem",
+                          color: "rgba(255,255,255,0.55)",
+                          lineHeight: 1.4,
+                          letterSpacing: "0.02em",
+                        }}
+                      >
+                        {service.desc}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
