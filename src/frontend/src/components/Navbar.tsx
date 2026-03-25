@@ -29,13 +29,14 @@ export default function Navbar({
     >
       <button
         type="button"
-        className="bg-transparent border-0 p-0 cursor-pointer flex items-center"
+        className="bg-transparent border-0 p-0 cursor-pointer flex items-center gap-3"
         onClick={() => setActiveSection("home")}
       >
         <img
-          src="/assets/generated/aura-mep-droplet-logo-transparent.dim_400x140.png"
+          src="/assets/generated/aura-mep-logo-visible-transparent.dim_420x140.png"
           alt="Aura MEP"
           className="h-14 w-auto object-contain"
+          style={{ filter: "drop-shadow(0 0 8px rgba(0,180,216,0.4))" }}
         />
       </button>
       <div className="hidden md:flex items-center gap-1">
