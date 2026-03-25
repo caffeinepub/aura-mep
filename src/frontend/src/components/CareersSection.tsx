@@ -47,7 +47,7 @@ export default function CareersSection({ isVisible }: { isVisible: boolean }) {
           bottom: "5%",
           left: "5%",
           background:
-            "radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)",
           animation: "floatOrb 12s ease-in-out infinite 2s",
         }}
       />
@@ -73,7 +73,7 @@ export default function CareersSection({ isVisible }: { isVisible: boolean }) {
             className="font-bold"
             style={{
               fontSize: "clamp(1.8rem, 4vw, 3rem)",
-              color: "rgba(220,240,255,0.95)",
+              color: "rgba(202,240,248,0.95)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -83,7 +83,7 @@ export default function CareersSection({ isVisible }: { isVisible: boolean }) {
             className="mt-2"
             style={{
               fontSize: "clamp(0.82rem, 1.3vw, 0.95rem)",
-              color: "rgba(202,240,248,0.6)",
+              color: "rgba(150,220,240,0.6)",
               maxWidth: 500,
             }}
           >
@@ -121,7 +121,7 @@ export default function CareersSection({ isVisible }: { isVisible: boolean }) {
                 className="font-bold"
                 style={{
                   fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)",
-                  color: "rgba(220,240,255,0.92)",
+                  color: "rgba(202,240,248,0.92)",
                 }}
               >
                 {job.title}
@@ -130,7 +130,7 @@ export default function CareersSection({ isVisible }: { isVisible: boolean }) {
               <p
                 style={{
                   fontSize: "0.82rem",
-                  color: "rgba(202,240,248,0.62)",
+                  color: "rgba(150,220,240,0.62)",
                   lineHeight: 1.5,
                 }}
               >
@@ -142,7 +142,7 @@ export default function CareersSection({ isVisible }: { isVisible: boolean }) {
                   className="flex items-center gap-1"
                   style={{
                     fontSize: "0.75rem",
-                    color: "rgba(202,240,248,0.5)",
+                    color: "rgba(150,220,240,0.5)",
                   }}
                 >
                   <MapPin size={12} /> {job.location}

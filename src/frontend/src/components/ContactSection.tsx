@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Globe, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -36,7 +36,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
 
   const labelStyle = {
     fontSize: "0.72rem",
-    color: "rgba(202,240,248,0.5)",
+    color: "rgba(150,220,240,0.5)",
     letterSpacing: "0.05em",
     textTransform: "uppercase" as const,
   };
@@ -51,7 +51,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 20% 70%, rgba(0,100,180,0.12) 0%, transparent 70%), oklch(0.14 0.06 240)",
+            "radial-gradient(ellipse 70% 50% at 20% 70%, rgba(0,100,160,0.12) 0%, transparent 70%), oklch(0.14 0.06 240)",
         }}
       />
       <div
@@ -62,7 +62,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
           top: "10%",
           right: "-5%",
           background:
-            "radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)",
           animation: "floatOrb 14s ease-in-out infinite 1s",
         }}
       />
@@ -88,7 +88,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
             className="font-bold"
             style={{
               fontSize: "clamp(1.8rem, 4vw, 3rem)",
-              color: "rgba(220,240,255,0.95)",
+              color: "rgba(202,240,248,0.95)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -106,14 +106,14 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
           >
             <h3
               className="font-semibold mb-1"
-              style={{ fontSize: "1rem", color: "rgba(220,240,255,0.9)" }}
+              style={{ fontSize: "1rem", color: "rgba(202,240,248,0.9)" }}
             >
               Aura MEP — Madurai Branch
             </h3>
             <p
               style={{
                 fontSize: "0.82rem",
-                color: "rgba(202,240,248,0.58)",
+                color: "rgba(150,220,240,0.58)",
                 lineHeight: 1.6,
               }}
             >
@@ -122,8 +122,9 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
             </p>
 
             {[
-              { Icon: Phone, label: "Phone", value: "+91 XXXXX XXXXX" },
-              { Icon: Mail, label: "Email", value: "info@auramep.com" },
+              { Icon: Phone, label: "Phone", value: "+91 72001 52014" },
+              { Icon: Mail, label: "Email", value: "rajkumar@auramep.com" },
+              { Icon: Globe, label: "Website", value: "auramep.com" },
               {
                 Icon: MapPin,
                 label: "Address",
@@ -147,7 +148,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
                   <p
                     style={{
                       fontSize: "0.7rem",
-                      color: "rgba(202,240,248,0.45)",
+                      color: "rgba(150,220,240,0.45)",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
                     }}
@@ -274,7 +275,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
                 </>
               ) : (
                 <>
-                  Send Message <Send size={15} />
+                  <Send size={15} /> Send Message
                 </>
               )}
             </button>
@@ -283,7 +284,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
               <p
                 data-ocid="contact.loading_state"
                 className="text-center"
-                style={{ fontSize: "0.75rem", color: "rgba(202,240,248,0.4)" }}
+                style={{ fontSize: "0.75rem", color: "rgba(150,220,240,0.4)" }}
               >
                 Submitting your enquiry...
               </p>

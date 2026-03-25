@@ -14,10 +14,10 @@ export default function HomeSection({
       className={`section-full ${isVisible ? "section-visible" : "section-hidden"}`}
       style={{ zIndex: 10 }}
     >
-      {/* Background image with Ken Burns */}
+      {/* Building background image with Ken Burns */}
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/assets/generated/aura-mep-hero-bg.dim_1920x1080.jpg"
+          src="/assets/generated/building-bg.dim_1920x1080.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           style={{
@@ -30,11 +30,11 @@ export default function HomeSection({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(5,15,30,0.82) 0%, rgba(10,22,40,0.55) 50%, rgba(5,15,30,0.78) 100%)",
+              "linear-gradient(180deg, rgba(10,12,18,0.85) 0%, rgba(15,18,28,0.55) 50%, rgba(10,12,18,0.92) 100%)",
           }}
         />
 
-        {/* Shimmer orbs */}
+        {/* Subtle gold glow orbs */}
         <div
           className="absolute rounded-full pointer-events-none"
           style={{
@@ -43,7 +43,7 @@ export default function HomeSection({
             top: "10%",
             left: "60%",
             background:
-              "radial-gradient(circle, rgba(0,180,216,0.18) 0%, rgba(0,180,216,0.04) 60%, transparent 80%)",
+              "radial-gradient(circle, rgba(0,180,216,0.10) 0%, rgba(0,150,200,0.03) 60%, transparent 80%)",
             animation:
               "floatOrb 12s ease-in-out infinite, shimmerPulse 6s ease-in-out infinite",
           }}
@@ -56,14 +56,14 @@ export default function HomeSection({
             bottom: "20%",
             right: "15%",
             background:
-              "radial-gradient(circle, rgba(0,220,240,0.14) 0%, rgba(0,180,216,0.04) 60%, transparent 80%)",
+              "radial-gradient(circle, rgba(0,200,240,0.08) 0%, rgba(0,180,216,0.03) 60%, transparent 80%)",
             animation:
               "floatOrb 16s ease-in-out infinite reverse, shimmerPulse 8s ease-in-out infinite 2s",
           }}
         />
       </div>
 
-      {/* Main content — centered */}
+      {/* Main content */}
       <div
         className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
         style={{ paddingTop: "var(--nav-height)" }}
@@ -98,8 +98,8 @@ export default function HomeSection({
         >
           <span
             style={{
-              color: "rgba(220,240,255,0.97)",
-              textShadow: "0 2px 30px rgba(0,0,0,0.5)",
+              color: "rgba(240,245,255,0.97)",
+              textShadow: "0 2px 30px rgba(0,0,0,0.7)",
             }}
           >
             AURA{" "}
@@ -107,7 +107,7 @@ export default function HomeSection({
           <span
             style={{
               color: "oklch(var(--aqua-glow))",
-              textShadow: "0 0 40px rgba(0,180,216,0.6)",
+              textShadow: "0 0 40px rgba(0,180,216,0.7)",
             }}
           >
             MEP
@@ -119,7 +119,7 @@ export default function HomeSection({
           className="font-medium mb-3"
           style={{
             fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
-            color: "rgba(220,240,255,0.92)",
+            color: "rgba(220,235,255,0.92)",
             letterSpacing: "0.01em",
             animation: isVisible
               ? "fadeSlideUp 0.7s ease 0.2s forwards"
@@ -135,7 +135,7 @@ export default function HomeSection({
           className="mb-8"
           style={{
             fontSize: "clamp(0.75rem, 1.5vw, 0.95rem)",
-            color: "rgba(202,240,248,0.6)",
+            color: "rgba(180,210,240,0.6)",
             letterSpacing: "0.03em",
             animation: isVisible
               ? "fadeSlideUp 0.7s ease 0.3s forwards"
@@ -157,7 +157,7 @@ export default function HomeSection({
             padding: "14px 36px",
             borderRadius: 50,
             background:
-              "linear-gradient(135deg, rgba(0,180,216,0.9), rgba(0,150,190,0.95))",
+              "linear-gradient(135deg, rgba(0,180,216,0.9), rgba(0,140,180,0.95))",
             color: "#fff",
             border: "none",
             cursor: "pointer",
@@ -190,7 +190,7 @@ export default function HomeSection({
       <div
         className="absolute bottom-0 left-0 right-0 z-10"
         style={{
-          background: "rgba(6,14,28,0.85)",
+          background: "rgba(10,12,18,0.88)",
           backdropFilter: "blur(12px)",
           borderTop: "1px solid rgba(0,180,216,0.15)",
           padding: "14px 24px",
@@ -207,7 +207,7 @@ export default function HomeSection({
             <span key={svc} className="flex items-center gap-3">
               <span
                 className="text-xs font-semibold tracking-widest uppercase"
-                style={{ color: "rgba(202,240,248,0.65)" }}
+                style={{ color: "rgba(150,220,240,0.65)" }}
               >
                 {svc}
               </span>

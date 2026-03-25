@@ -13,10 +13,7 @@ const navItems = [
 export default function Navbar({
   activeSection,
   setActiveSection,
-}: {
-  activeSection: Section;
-  setActiveSection: (s: Section) => void;
-}) {
+}: { activeSection: Section; setActiveSection: (s: Section) => void }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -27,24 +24,20 @@ export default function Navbar({
         background:
           "linear-gradient(to bottom, rgba(10,22,40,0.95), rgba(10,22,40,0.6))",
         backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(0,180,216,0.12)",
       }}
     >
-      {/* Logo */}
       <button
         type="button"
-        className="bg-transparent border-0 p-0 cursor-pointer flex-shrink-0"
+        className="bg-transparent border-0 p-0 cursor-pointer flex items-center"
         onClick={() => setActiveSection("home")}
       >
         <img
-          src="/assets/generated/aura-mep-logo-transparent.dim_400x120.png"
+          src="/assets/generated/aura-mep-logo-v2-transparent.dim_500x150.png"
           alt="Aura MEP"
-          className="h-10 w-auto object-contain"
+          className="h-14 w-auto object-contain"
         />
       </button>
-
-      {/* Desktop nav */}
       <div className="hidden md:flex items-center gap-1">
         {navItems.map(({ id, label, Icon }) => (
           <button
@@ -59,25 +52,19 @@ export default function Navbar({
           </button>
         ))}
       </div>
-
-      {/* Mobile hamburger */}
       <button
         type="button"
         className="md:hidden p-2 text-white"
-        style={{ color: "rgba(202,240,248,0.85)" }}
         onClick={() => setMobileOpen(!mobileOpen)}
       >
         {mobileOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
-
-      {/* Mobile dropdown */}
       {mobileOpen && (
         <div
           className="absolute top-full left-0 right-0 flex flex-col gap-1 p-4"
           style={{
             background: "rgba(10,22,40,0.97)",
             backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
             borderBottom: "1px solid rgba(0,180,216,0.2)",
           }}
         >
@@ -85,7 +72,6 @@ export default function Navbar({
             <button
               type="button"
               key={id}
-              data-ocid={`nav.${id}.link`}
               className={`nav-link w-full justify-start${activeSection === id ? " active" : ""}`}
               onClick={() => {
                 setActiveSection(id);

@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
 
 const stats = [
+  { value: "2024", label: "Year of Establishment" },
   { value: "50+", label: "Projects Completed" },
-  { value: "10+", label: "Years Experience" },
   { value: "100+", label: "Happy Clients" },
   { value: "2", label: "Countries Served" },
 ];
@@ -26,10 +26,9 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,100,180,0.12) 0%, transparent 70%), oklch(0.14 0.06 240)",
+            "radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,100,160,0.15) 0%, transparent 70%), oklch(0.14 0.06 240)",
         }}
       />
-      {/* Shimmer orb */}
       <div
         className="absolute rounded-full pointer-events-none"
         style={{
@@ -38,7 +37,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
           top: "-10%",
           right: "-10%",
           background:
-            "radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)",
           animation: "floatOrb 14s ease-in-out infinite",
         }}
       />
@@ -64,7 +63,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
               className="font-bold mb-4"
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 3rem)",
-                color: "rgba(220,240,255,0.95)",
+                color: "rgba(202,240,248,0.95)",
                 letterSpacing: "-0.02em",
                 lineHeight: 1.15,
               }}
@@ -74,7 +73,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
             <p
               className="leading-relaxed mb-4"
               style={{
-                color: "rgba(202,240,248,0.72)",
+                color: "rgba(150,220,240,0.72)",
                 fontSize: "clamp(0.85rem, 1.4vw, 1rem)",
               }}
             >
@@ -86,7 +85,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
             <p
               className="leading-relaxed"
               style={{
-                color: "rgba(202,240,248,0.65)",
+                color: "rgba(130,210,235,0.65)",
                 fontSize: "clamp(0.82rem, 1.3vw, 0.95rem)",
               }}
             >
@@ -120,7 +119,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
                       style={{
                         fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
                         color: "oklch(var(--aqua-glow))",
-                        textShadow: "0 0 20px rgba(0,180,216,0.4)",
+                        textShadow: "0 0 20px rgba(0,180,216,0.5)",
                       }}
                     >
                       {s.value}
@@ -128,7 +127,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
                     <div
                       style={{
                         fontSize: "0.75rem",
-                        color: "rgba(202,240,248,0.6)",
+                        color: "rgba(150,220,240,0.6)",
                         letterSpacing: "0.04em",
                       }}
                     >
@@ -161,7 +160,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
                     <span
                       style={{
                         fontSize: "0.875rem",
-                        color: "rgba(202,240,248,0.78)",
+                        color: "rgba(150,220,240,0.78)",
                       }}
                     >
                       {v}
@@ -177,7 +176,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
       {/* Footer */}
       <div
         className="absolute bottom-4 left-0 right-0 z-10 text-center"
-        style={{ fontSize: "0.75rem", color: "rgba(202,240,248,0.3)" }}
+        style={{ fontSize: "0.75rem", color: "rgba(150,220,240,0.3)" }}
       >
         © {new Date().getFullYear()}. Built with love using{" "}
         <a

@@ -91,7 +91,7 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 70% 60%, rgba(0,120,200,0.1) 0%, transparent 70%), oklch(0.14 0.06 240)",
+            "radial-gradient(ellipse 70% 50% at 70% 60%, rgba(0,100,160,0.12) 0%, transparent 70%), oklch(0.14 0.06 240)",
         }}
       />
 
@@ -114,7 +114,7 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
             className="font-bold"
             style={{
               fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
-              color: "rgba(220,240,255,0.95)",
+              color: "rgba(202,240,248,0.95)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -146,7 +146,7 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
                 className="font-semibold mb-1"
                 style={{
                   fontSize: "clamp(0.78rem, 1.2vw, 0.95rem)",
-                  color: "rgba(220,240,255,0.92)",
+                  color: "rgba(202,240,248,0.92)",
                 }}
               >
                 {svc.title}
@@ -155,7 +155,7 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
                 className="mb-2 leading-snug"
                 style={{
                   fontSize: "clamp(0.68rem, 1vw, 0.8rem)",
-                  color: "rgba(202,240,248,0.55)",
+                  color: "rgba(150,220,240,0.55)",
                 }}
               >
                 {svc.desc}
@@ -173,7 +173,7 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
                     <span
                       style={{
                         fontSize: "clamp(0.65rem, 0.9vw, 0.76rem)",
-                        color: "rgba(202,240,248,0.62)",
+                        color: "rgba(130,210,235,0.62)",
                       }}
                     >
                       {pt}
