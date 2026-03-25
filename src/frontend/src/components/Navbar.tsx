@@ -33,7 +33,7 @@ export default function Navbar({
         onClick={() => setActiveSection("home")}
       >
         <img
-          src="/assets/generated/aura-mep-logo-v2-transparent.dim_500x150.png"
+          src="/assets/generated/aura-mep-droplet-logo-transparent.dim_400x140.png"
           alt="Aura MEP"
           className="h-14 w-auto object-contain"
         />
