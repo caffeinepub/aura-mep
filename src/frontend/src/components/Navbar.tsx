@@ -10,6 +10,127 @@ const navItems = [
   { id: "contact" as Section, label: "Contact", Icon: Phone },
 ];
 
+function AuraMepLogo() {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+      <svg
+        role="img"
+        aria-label="Aura MEP water droplet logo"
+        width="36"
+        height="44"
+        viewBox="0 0 36 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ flexShrink: 0 }}
+      >
+        <title>Aura MEP water droplet logo</title>
+        <path
+          d="M18 2 C18 2, 4 16, 4 26 A14 14 0 0 0 32 26 C32 16, 18 2, 18 2Z"
+          fill="rgba(0,180,200,0.25)"
+          stroke="#00b4c8"
+          strokeWidth="1.5"
+        />
+        <rect
+          x="9"
+          y="28"
+          width="4"
+          height="8"
+          fill="#00e5ff"
+          opacity="0.9"
+          rx="0.5"
+        />
+        <rect
+          x="11"
+          y="24"
+          width="2"
+          height="4"
+          fill="#00e5ff"
+          opacity="0.9"
+          rx="0.5"
+        />
+        <rect
+          x="15"
+          y="26"
+          width="3"
+          height="10"
+          fill="#00cfff"
+          opacity="0.85"
+          rx="0.5"
+        />
+        <rect
+          x="16"
+          y="22"
+          width="1.5"
+          height="4"
+          fill="#00cfff"
+          opacity="0.85"
+          rx="0.5"
+        />
+        <rect
+          x="20"
+          y="27"
+          width="4"
+          height="9"
+          fill="#00b4c8"
+          opacity="0.9"
+          rx="0.5"
+        />
+        <rect
+          x="21.5"
+          y="23"
+          width="1.5"
+          height="4"
+          fill="#00b4c8"
+          opacity="0.9"
+          rx="0.5"
+        />
+        <path
+          d="M18 2 C18 2, 4 16, 4 26 A14 14 0 0 0 32 26 C32 16, 18 2, 18 2Z"
+          fill="none"
+          stroke="#00b4c8"
+          strokeWidth="1.5"
+        />
+        <ellipse
+          cx="13"
+          cy="18"
+          rx="2.5"
+          ry="3.5"
+          fill="rgba(255,255,255,0.15)"
+          transform="rotate(-20 13 18)"
+        />
+      </svg>
+      <div
+        style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}
+      >
+        <span
+          style={{
+            fontFamily: "'Segoe UI', Arial, sans-serif",
+            fontSize: "18px",
+            fontWeight: "900",
+            letterSpacing: "3px",
+            color: "#ffffff",
+            textShadow: "0 0 8px rgba(255,255,255,0.4)",
+          }}
+        >
+          AURA
+        </span>
+        <span
+          style={{
+            fontFamily: "'Segoe UI', Arial, sans-serif",
+            fontSize: "13px",
+            fontWeight: "900",
+            letterSpacing: "5px",
+            color: "#00e5ff",
+            textShadow: "0 0 12px rgba(0,229,255,0.8)",
+          }}
+        >
+          MEP
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function Navbar({
   activeSection,
   setActiveSection,
@@ -29,45 +150,11 @@ export default function Navbar({
     >
       <button
         type="button"
-        className="bg-transparent border-0 p-0 cursor-pointer flex items-center gap-2"
+        className="bg-transparent border-0 p-0 cursor-pointer"
         onClick={() => setActiveSection("home")}
         data-ocid="nav.home.link"
       >
-        {/* Water droplet with buildings icon */}
-        <img
-          src="/assets/generated/aura-mep-peacock-logo-transparent-transparent.dim_300x160.png"
-          alt="Aura MEP Droplet"
-          style={{ height: "44px", width: "auto", objectFit: "contain" }}
-        />
-        {/* Bold text always visible regardless of image */}
-        <div className="flex flex-col leading-none">
-          <span
-            style={{
-              fontFamily: "'Segoe UI', Arial, sans-serif",
-              fontSize: "18px",
-              fontWeight: "900",
-              letterSpacing: "3px",
-              color: "#ffffff",
-              textShadow: "0 0 8px rgba(255,255,255,0.4)",
-              lineHeight: 1.1,
-            }}
-          >
-            AURA
-          </span>
-          <span
-            style={{
-              fontFamily: "'Segoe UI', Arial, sans-serif",
-              fontSize: "14px",
-              fontWeight: "900",
-              letterSpacing: "4px",
-              color: "#00e5ff",
-              textShadow: "0 0 10px rgba(0,229,255,0.7)",
-              lineHeight: 1.1,
-            }}
-          >
-            MEP
-          </span>
-        </div>
+        <AuraMepLogo />
       </button>
       <div className="hidden md:flex items-center gap-1">
         {navItems.map(({ id, label, Icon }) => (
