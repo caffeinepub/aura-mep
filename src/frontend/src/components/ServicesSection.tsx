@@ -91,7 +91,7 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 70% 60%, rgba(0,100,160,0.12) 0%, transparent 70%), oklch(0.14 0.06 240)",
+            "radial-gradient(ellipse 70% 50% at 70% 60%, rgba(0,95,115,0.15) 0%, transparent 70%), oklch(0.12 0.05 225)",
         }}
       />
 
@@ -137,8 +137,8 @@ export default function ServicesSection({ isVisible }: { isVisible: boolean }) {
               variants={cardVariants}
               style={{ cursor: "default" }}
               whileHover={{
-                borderColor: "rgba(0,180,216,0.5)",
-                boxShadow: "0 0 20px rgba(0,180,216,0.15)",
+                borderColor: "rgba(0,180,200,0.5)",
+                boxShadow: "0 0 20px rgba(0,180,200,0.15)",
               }}
             >
               <span className="text-2xl mb-2">{svc.icon}</span>

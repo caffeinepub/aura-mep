@@ -25,16 +25,16 @@ export default function HomeSection({
             transformOrigin: "center center",
           }}
         />
-        {/* Dark overlay */}
+        {/* Dark peacock overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,12,18,0.85) 0%, rgba(15,18,28,0.55) 50%, rgba(10,12,18,0.92) 100%)",
+              "linear-gradient(180deg, rgba(0,20,35,0.88) 0%, rgba(0,30,45,0.55) 50%, rgba(0,15,28,0.94) 100%)",
           }}
         />
 
-        {/* Subtle gold glow orbs */}
+        {/* Peacock glow orbs */}
         <div
           className="absolute rounded-full pointer-events-none"
           style={{
@@ -43,7 +43,7 @@ export default function HomeSection({
             top: "10%",
             left: "60%",
             background:
-              "radial-gradient(circle, rgba(0,180,216,0.10) 0%, rgba(0,150,200,0.03) 60%, transparent 80%)",
+              "radial-gradient(circle, rgba(0,180,200,0.10) 0%, rgba(0,150,180,0.03) 60%, transparent 80%)",
             animation:
               "floatOrb 12s ease-in-out infinite, shimmerPulse 6s ease-in-out infinite",
           }}
@@ -56,7 +56,7 @@ export default function HomeSection({
             bottom: "20%",
             right: "15%",
             background:
-              "radial-gradient(circle, rgba(0,200,240,0.08) 0%, rgba(0,180,216,0.03) 60%, transparent 80%)",
+              "radial-gradient(circle, rgba(0,200,220,0.08) 0%, rgba(0,180,200,0.03) 60%, transparent 80%)",
             animation:
               "floatOrb 16s ease-in-out infinite reverse, shimmerPulse 8s ease-in-out infinite 2s",
           }}
@@ -73,8 +73,8 @@ export default function HomeSection({
           className="mb-5 px-5 py-2 rounded-full border text-xs font-bold tracking-widest uppercase"
           style={{
             color: "oklch(var(--aqua-glow))",
-            borderColor: "rgba(0,180,216,0.45)",
-            background: "rgba(0,180,216,0.08)",
+            borderColor: "rgba(0,180,200,0.45)",
+            background: "rgba(0,180,200,0.08)",
             backdropFilter: "blur(8px)",
             animation: isVisible ? "fadeSlideUp 0.6s ease forwards" : "none",
             opacity: 0,
@@ -107,7 +107,7 @@ export default function HomeSection({
           <span
             style={{
               color: "oklch(var(--aqua-glow))",
-              textShadow: "0 0 40px rgba(0,180,216,0.7)",
+              textShadow: "0 0 40px rgba(0,180,200,0.7)",
             }}
           >
             MEP
@@ -157,11 +157,11 @@ export default function HomeSection({
             padding: "14px 36px",
             borderRadius: 50,
             background:
-              "linear-gradient(135deg, rgba(0,180,216,0.9), rgba(0,140,180,0.95))",
+              "linear-gradient(135deg, rgba(0,180,200,0.9), rgba(0,140,170,0.95))",
             color: "#fff",
             border: "none",
             cursor: "pointer",
-            boxShadow: "0 4px 24px rgba(0,180,216,0.45)",
+            boxShadow: "0 4px 24px rgba(0,180,200,0.45)",
             transition: "all 0.3s ease",
             animation: isVisible
               ? "fadeSlideUp 0.7s ease 0.4s forwards"
@@ -170,13 +170,13 @@ export default function HomeSection({
           }}
           onMouseEnter={(e) => {
             (e.currentTarget as HTMLButtonElement).style.boxShadow =
-              "0 6px 32px rgba(0,180,216,0.7)";
+              "0 6px 32px rgba(0,180,200,0.7)";
             (e.currentTarget as HTMLButtonElement).style.transform =
               "translateY(-2px)";
           }}
           onMouseLeave={(e) => {
             (e.currentTarget as HTMLButtonElement).style.boxShadow =
-              "0 4px 24px rgba(0,180,216,0.45)";
+              "0 4px 24px rgba(0,180,200,0.45)";
             (e.currentTarget as HTMLButtonElement).style.transform =
               "translateY(0)";
           }}
@@ -190,9 +190,9 @@ export default function HomeSection({
       <div
         className="absolute bottom-0 left-0 right-0 z-10"
         style={{
-          background: "rgba(10,12,18,0.88)",
+          background: "rgba(0,15,25,0.90)",
           backdropFilter: "blur(12px)",
-          borderTop: "1px solid rgba(0,180,216,0.15)",
+          borderTop: "1px solid rgba(0,180,200,0.15)",
           padding: "14px 24px",
         }}
       >
@@ -212,7 +212,7 @@ export default function HomeSection({
                 {svc}
               </span>
               {i < arr.length - 1 && (
-                <span style={{ color: "rgba(0,180,216,0.4)" }}>·</span>
+                <span style={{ color: "rgba(0,180,200,0.4)" }}>·</span>
               )}
             </span>
           ))}

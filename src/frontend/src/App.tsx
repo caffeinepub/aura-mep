@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div
       className="relative w-screen h-screen overflow-hidden"
-      style={{ background: "oklch(0.14 0.06 240)" }}
+      style={{ background: "oklch(0.12 0.05 225)" }}
     >
       <Navbar
         activeSection={activeSection}

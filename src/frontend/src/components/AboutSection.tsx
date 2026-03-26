@@ -26,7 +26,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,100,160,0.15) 0%, transparent 70%), oklch(0.14 0.06 240)",
+            "radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,95,115,0.18) 0%, transparent 70%), oklch(0.12 0.05 225)",
         }}
       />
       <div
@@ -37,7 +37,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
           top: "-10%",
           right: "-10%",
           background:
-            "radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,180,200,0.08) 0%, transparent 70%)",
           animation: "floatOrb 14s ease-in-out infinite",
         }}
       />
@@ -110,8 +110,8 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
                     key={s.label}
                     className="text-center py-4 px-2 rounded-lg"
                     style={{
-                      background: "rgba(0,180,216,0.06)",
-                      border: "1px solid rgba(0,180,216,0.12)",
+                      background: "rgba(0,150,180,0.06)",
+                      border: "1px solid rgba(0,150,180,0.12)",
                     }}
                   >
                     <div
@@ -119,7 +119,7 @@ export default function AboutSection({ isVisible }: { isVisible: boolean }) {
                       style={{
                         fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
                         color: "oklch(var(--aqua-glow))",
-                        textShadow: "0 0 20px rgba(0,180,216,0.5)",
+                        textShadow: "0 0 20px rgba(0,180,200,0.5)",
                       }}
                     >
                       {s.value}

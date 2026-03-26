@@ -27,8 +27,8 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
   }
 
   const inputStyle = {
-    background: "rgba(0,180,216,0.06)",
-    border: "1px solid rgba(0,180,216,0.2)",
+    background: "rgba(0,150,180,0.06)",
+    border: "1px solid rgba(0,150,180,0.2)",
     color: "rgba(202,240,248,0.9)",
     borderRadius: 8,
     fontSize: "0.875rem",
@@ -51,7 +51,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 20% 70%, rgba(0,100,160,0.12) 0%, transparent 70%), oklch(0.14 0.06 240)",
+            "radial-gradient(ellipse 70% 50% at 20% 70%, rgba(0,95,115,0.15) 0%, transparent 70%), oklch(0.12 0.05 225)",
         }}
       />
       <div
@@ -62,7 +62,7 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
           top: "10%",
           right: "-5%",
           background:
-            "radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,180,200,0.08) 0%, transparent 70%)",
           animation: "floatOrb 14s ease-in-out infinite 1s",
         }}
       />
@@ -135,8 +135,8 @@ export default function ContactSection({ isVisible }: { isVisible: boolean }) {
                 <div
                   className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
                   style={{
-                    background: "rgba(0,180,216,0.12)",
-                    border: "1px solid rgba(0,180,216,0.2)",
+                    background: "rgba(0,150,180,0.12)",
+                    border: "1px solid rgba(0,150,180,0.2)",
                   }}
                 >
                   <Icon
